@@ -701,6 +701,18 @@ function showSkill() -->
       setupAddFile();
       setupBio();
 
+      // Load files from JSON file in /files/files.json
+fetch('/files/files.json')
+  .then(r => r.json())
+  .then(json => {
+    state.files = json;
+    persist();      // save to localStorage for faster loads
+    renderFiles();  // update UI
+  })
+  .catch(err => {
+    console.error("Failed to load files.json", err);
+  });
+
       $('#year').textContent = new Date().getFullYear();
     }
 
