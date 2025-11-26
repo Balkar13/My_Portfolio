@@ -1,12 +1,12 @@
  {
-        "name": 'Balkar Singh',
-        "headline": 'Cybersecurity Student • Bug Bounty Learner',
-        "location": 'Khiwa Kalan, Punjab (India)',
-        "email": 'balkar913n@gmail.com',
-        "about": '3rd year B.Voc in Cyber Security. Practicing labs (DVWA, bWAPP, SQLi Audit), writing practical files, and sharing learnings.',
+        "name": "Balkar Singh",
+        "headline": "Cybersecurity Student • Bug Bounty Learner",
+        "location": "Khiwa Kalan, Punjab (India)",
+        "email": "balkar913n@gmail.com",
+        "about": "3rd year B.Voc in Cyber Security. Practicing labs (DVWA, bWAPP, SQLi Audit), writing practical files, and sharing learnings.",
         "links": [
-          { "label": 'GitHub', href: 'https://github.com/Balkar13' },
-          { "label": 'LinkedIn', href: 'https://linkedin.com/in/balkar-singh-4346932a3/' },
-          { "label": 'Blog', href: 'wwww.balkarsidhu.xyz' },
+          { "label": "GitHub", href: "https://github.com/Balkar13" },
+          { "label": "LinkedIn", href: "https://linkedin.com/in/balkar-singh-4346932a3/" },
+          { "label": "Blog", href: "wwww.balkarsidhu.xyz" },
         ]
       }
