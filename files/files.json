@@ -1,1 +1,10 @@
+[
+  {
+    "id": "file-example",
+    "name": "example.pdf",
+    "kind": "pdf",
+    "url": "/files/example.pdf",
+    "note": "Sample file from JSON"
+  }
+]
 
