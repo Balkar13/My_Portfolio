@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Balkar Singh · Portfolio</title>
+  <!-- TailwindCSS CDN (pure CSS) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { } }
+    }
+  </script>
+  <!-- anime.js CDN -->
+  <script src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js"></script>
+  <style>
+    /* Small helper for clamping text */
+    .line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+  </style>
+</head>
+<body class="min-h-screen bg-zinc-50 text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-zinc-950/50 border-b border-zinc-200/60 dark:border-zinc-800">
+    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
+      <button id="nav-home" class="text-xl font-semibold tracking-tight hover:opacity-80 transition-opacity" aria-label="Go to Home">
+        BS<span class="text-zinc-500">·</span>Portfolio
+      </button>
+
+      <nav class="ml-6 hidden md:flex gap-2">
+        <button data-route="home" class="px-3 py-2 rounded-full text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">Home</button>
+        <button data-route="projects" class="px-3 py-2 rounded-full text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">Projects</button>
+        <button data-route="bio" class="px-3 py-2 rounded-full text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">Bio</button>
+        <button data-route="blog" class="px-3 py-2 rounded-full text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">Blog</button>
+        <button data-route="files" class="px-3 py-2 rounded-full text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">Files</button>
+      </nav>
+
+      <div class="ml-auto flex items-center gap-2">
+        <div class="relative">
+          <input id="search-input" placeholder="Search projects, blog, files…" class="w-64 md:w-80 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900 px-4 py-2 text-sm focus:outline-none focus:ring-2 ring-zinc-400 dark:ring-zinc-600" />
+          <div id="search-panel" class="hidden absolute left-0 mt-2 w-[min(92vw,28rem)] max-h-[60vh] overflow-auto rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-xl p-3">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs uppercase tracking-wider text-zinc-500">Live results</span>
+              <button id="search-close" class="text-xs text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300">Close</button>
+            </div>
+            <div id="search-results" class="space-y-4 text-sm text-zinc-500">Type to search…</div>
+          </div>
+        </div>
+        <button id="theme-toggle" class="px-3 py-2 rounded-full text-sm border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Toggle theme">Light</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="mx-auto max-w-6xl px-4 pt-16 pb-10">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 id="brand" class="text-5xl md:text-6xl font-black tracking-tight leading-[1.05]"></h1>
+        <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-300 max-w-prose">
+          Cyber Security Student | Aspiring Ethical Hacker | Learning Ethical Hacking, Network Security, and System Protection. Always exploring, practicing, and sharing knowledge 🌸. This is a single space for my <b>projects</b>, <b>bio</b>, <b>blog</b> and <b>files</b> — with live search like magic.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#projects" data-route-link="projects" class="px-5 py-2 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:opacity-90">See Projects</a>
+          <a href="#bio" data-route-link="bio" class="px-5 py-2 rounded-full border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800">About Me</a>
+        </div>
+      </div>
+      <div class="text-left">
+  <!-- START: Cyber Dashboard - replace the small "Inspired by" text block with this -->
+<!-- START: Code-with-Harry style animated skills box -->
+<div class="h-full w-full rounded-[1.35rem] bg-zinc-900/95 dark:bg-black/75 text-zinc-100 p-6 flex items-center justify-center">
+  <div class="w-full max-w-[28rem]">
+    <!-- header / fake terminal bar -->
+    <div class="flex items-center gap-3 mb-3">
+      <div class="w-3 h-3 rounded-full bg-red-500"></div>
+      <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+      <div class="w-3 h-3 rounded-full bg-green-500"></div>
+      <div class="ml-auto text-xs text-zinc-500">skills.js</div>
+    </div>
+
+    <!-- code area -->
+    <pre id="code-terminal" class="whitespace-pre-wrap leading-5 text-sm font-mono bg-[linear-gradient(90deg,#071017,rgba(255,255,255,0.02))] rounded-lg p-4 shadow-lg" style="min-height:170px;">
+/* Hello — I am <span id="cw-name" class="font-semibold">Balkar Singh</span> */
+
+function showSkill() -->
+&gt; <span id="typed-line" class="text-green-300"></span><span id="cursor" class="text-green-300">█</span>
+    </pre>
+
+    <!-- footer small -->
+    <div class="mt-3 text-xs text-zinc-400">Tip: press ▶ to run my mini-skill demo</div>
+  </div>
+</div>
+
+<!-- Typing script (looping: type -> pause -> delete -> next) -->
+<script>
+(function(){
+  const skills = [
+    "Web Exploitation","SQL Injection Testing","Exploit Development",
+    "Network Pentesting","Bug Bounty & Recon","Reverse Engineering"  
+  ];
+  const typed = document.getElementById('typed-line');
+  const cursor = document.getElementById('cursor');
+
+  let si = 0;         // skill index
+  let ci = 0;         // char index
+  let typing = true;
+  let speed = 50;     // typing speed ms per char
+  let pauseAfter = 900; // pause after full word (ms)
+  let deleting = false;
+
+  // blinking cursor (smooth)
+  setInterval(()=> {
+    cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+  }, 500);
+
+  function step(){
+    const word = skills[si];
+    if(!deleting){
+      // type
+      typed.textContent = word.slice(0, ++ci);
+      if(ci === word.length){
+        // pause, then delete
+        deleting = true;
+        setTimeout(step, pauseAfter);
+        return;
+      }
+      setTimeout(step, speed);
+    } else {
+      // delete
+      typed.textContent = word.slice(0, --ci);
+      if(ci === 0){
+        deleting = false;
+        si = (si + 1) % skills.length;
+        setTimeout(step, 160);
+        return;
+      }
+      setTimeout(step, Math.max(24, speed/1.6));
+    }
+  }
+
+  // small entrance animation for the terminal area using anime.js if present; fallback to CSS transform
+  const term = document.getElementById('code-terminal');
+  if(window.anime){
+    anime({
+      targets: term,
+      translateY: [10,0],
+      opacity: [0,1],
+      duration: 700,
+      easing: 'easeOutExpo'
+    });
+  } else {
+    term.style.transform = 'translateY(10px)';
+    term.style.opacity = 0;
+    setTimeout(()=> { term.style.transition = 'all 600ms cubic-bezier(.2,.8,.2,1)'; term.style.transform='translateY(0)'; term.style.opacity=1; }, 60);
+  }
+
+  // start after tiny delay so header renders
+  setTimeout(step, 500);
+
+  // optional: click to pause/resume typing
+  let running = true;
+  term.addEventListener('click', ()=> {
+    if(!running){ running = true; step(); } else { running = false; deleting = false; si = si; ci = typed.textContent.length; }
+  });
+
+  // automatically update name from your bio state if present
+  try {
+    if(window.state && window.state.bio && window.state.bio.name){
+      document.getElementById('cw-name').textContent = window.state.bio.name;
+    }
+  } catch(e){}
+})();
+</script>
+<!-- END: Code-with-Harry style animated skills box -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- END: Square Portfolio Stats -->
+
+      <!-- <div class="relative">
+        <div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 shadow-xl p-1">
+          <div class="h-full w-full rounded-[1.35rem] bg-white/70 dark:bg-zinc-950/60 backdrop-blur-sm flex items-center justify-center text-center p-8">
+            <div>
+              <div class="text-sm uppercase tracking-widest text-zinc-500">Inspired by</div>
+              <div class="text-2xl font-semibold">anime.js + Apple’s clean aesthetic</div>
+              <div class="mt-2 text-zinc-600 dark:text-zinc-400">Subtle motion, big whitespace, sharp typography.</div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="mx-auto max-w-6xl px-4 py-14 scroll-mt-24">
+    <div class="mb-6">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Projects (PDF)</h2>
+      <p class="text-zinc-600 dark:text-zinc-400 mt-2">Add each project one by one. View online or download the file.</p>
+    </div>
+
+    <!-- Add Project Form -->
+    <div class="mb-6">
+      <button id="add-proj-open" class="px-4 py-2 rounded-full border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-sm">+ Add Project</button>
+      <div id="add-proj-form" class="hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 p-4 bg-white/60 dark:bg-zinc-900/60 mt-3">
+        <div class="grid md:grid-cols-2 gap-3">
+          <input id="proj-title" placeholder="Title" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+          <input id="proj-url" placeholder="PDF URL (e.g., /files/my-project.pdf)" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+          <input id="proj-tags" placeholder="Tags (comma separated)" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+          <input id="proj-desc" placeholder="Short description" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+        </div>
+        <div class="mt-3 flex gap-2">
+          <button id="proj-save" class="px-4 py-2 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">Save</button>
+          <button id="proj-cancel" class="px-4 py-2 rounded-full border border-zinc-300 dark:border-zinc-700">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- Bio -->
+  <section id="bio" class="mx-auto max-w-6xl px-4 py-14 scroll-mt-24">
+    <div class="mb-6">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Bio</h2>
+      <p class="text-zinc-600 dark:text-zinc-400 mt-2">Who I am, what I’m learning, and how to reach me.</p>
+    </div>
+
+    <div class="rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/70 p-6">
+      <div class="flex items-start gap-4">
+        <div id="bio-avatar" class="h-16 w-16 rounded-2xl bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-xl font-bold">BS</div>
+        <div class="flex-1 min-w-0">
+          <div id="bio-name" class="text-2xl font-semibold leading-tight">Balkar Singh</div>
+          <div id="bio-headline" class="text-zinc-600 dark:text-zinc-300">Cybersecurity Student • Bug Bounty Learner</div>
+          <div id="bio-about" class="mt-3 text-zinc-700 dark:text-zinc-200">B.Voc in Cyber Security, Practicing labs (DVWA, bWAPP, web Goat, Portswigger, SQLi Audi-1), Exploring Try hack me Labs, and sharing learnings.</div>
+          <div class="mt-3 text-sm text-zinc-500"><span id="bio-location">Khiwa Kalan, Mansa, Punjab (India)</span> · <a id="bio-email" class="underline hover:no-underline" href="mailto:balkar913n@gmail.com">balkar913n@gmail.com</a></div>
+          <div id="bio-links" class="mt-3 flex flex-wrap gap-3"></div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <button id="bio-edit" class="px-3 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-sm">Edit</button>
+        </div>
+      </div>
+
+      <!-- Edit Form -->
+      <div id="bio-form" class="hidden mt-4 grid gap-3">
+        <input id="f-name" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+        <input id="f-headline" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+        <textarea id="f-about" rows="4" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900"></textarea>
+        <div class="grid md:grid-cols-2 gap-3">
+          <input id="f-location" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+          <input id="f-email" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+        </div>
+        <div>
+          <div class="text-sm text-zinc-500 mb-1">Links</div>
+          <div id="links-list" class="flex flex-wrap gap-2 mb-2"></div>
+          <div class="grid md:grid-cols-3 gap-2">
+            <input id="link-label" placeholder="Label (e.g., GitHub)" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+            <input id="link-href" placeholder="https://…" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+            <button id="link-add" class="px-3 py-2 rounded-lg bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">Add</button>
+          </div>
+        </div>
+        <div class="mt-2 flex gap-2">
+          <button id="bio-save" class="px-3 py-1.5 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 text-sm">Save</button>
+          <button id="bio-cancel" class="px-3 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-sm">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog" class="mx-auto max-w-6xl px-4 py-14 scroll-mt-24">
+    <div class="mb-6">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Blog</h2>
+      <p class="text-zinc-600 dark:text-zinc-400 mt-2">Short, practical write-ups.</p>
+    </div>
+
+    <div class="mb-6">
+      <button id="add-post-open" class="px-4 py-2 rounded-full border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-sm">+ Add Post</button>
+      <div id="add-post-form" class="hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 p-4 bg-white/60 dark:bg-zinc-900/60 mt-3">
+        <div class="grid md:grid-cols-2 gap-3">
+          <input id="post-title" placeholder="Title" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+          <input id="post-tags" placeholder="Tags (comma separated)" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+        </div>
+        <textarea id="post-excerpt" placeholder="Short excerpt" rows="3" class="mt-3 px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 w-full"></textarea>
+        <div class="mt-3 flex gap-2">
+          <button id="post-save" class="px-4 py-2 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">Save</button>
+          <button id="post-cancel" class="px-4 py-2 rounded-full border border-zinc-300 dark:border-zinc-700">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="blog-grid" class="grid md:grid-cols-2 gap-6"></div>
+  </section>
+
+  <!-- Files -->
+  <section id="files" class="mx-auto max-w-6xl px-4 py-14 scroll-mt-24">
+    <div class="mb-6">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Files</h2>
+      <p class="text-zinc-600 dark:text-zinc-400 mt-2">Extra resources, wordlists, PDFs, and more.</p>
+    </div>
+
+    <div class="mb-6">
+      <button id="add-file-open" class="px-4 py-2 rounded-full border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-sm">+ Add File</button>
+      <div id="add-file-form" class="hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 p-4 bg-white/60 dark:bg-zinc-900/60 mt-3">
+        <div class="grid md:grid-cols-4 gap-3">
+          <input id="file-name" placeholder="Filename (with extension)" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+          <input id="file-kind" placeholder="Type (pdf, txt, zip)" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" value="pdf" />
+          <input id="file-url" placeholder="URL (e.g., /files/name.pdf)" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+          <input id="file-note" placeholder="Short note (optional)" class="px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900" />
+        </div>
+        <div class="mt-3 flex gap-2">
+          <button id="file-save" class="px-4 py-2 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">Save</button>
+          <button id="file-cancel" class="px-4 py-2 rounded-full border border-zinc-300 dark:border-zinc-700">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="files-list" class="divide-y divide-zinc-200 dark:divide-zinc-800 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden"></div>
+  </section>
+
+  <footer class="mt-20 py-10 border-t border-zinc-200 dark:border-zinc-800 text-sm text-center text-zinc-500">
+    <div class="mx-auto max-w-6xl px-4">
+      <div>© <span id="year"></span> Balkar Singh. All rights reserved.</div>
+      <div class="mt-2">Built with HTML + TailwindCSS + anime.js</div>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- Storage Helpers ----------
+    const load = (k, v) => { try { return JSON.parse(localStorage.getItem(k)) ?? v } catch { return v } };
+    const save = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)) } catch {} };
+
+    // ---------- State ----------
+    let state = {
+      dark: load('bs-dark', true),
+      route: load('bs-route', 'home'),
+      projects: load('bs-projects', [
+        { id: 'proj-sqli-labs', title: 'SQLi Audit 1 – Complete Solutions', description: 'Step-by-step solutions with screenshots for all lessons.', tags: ['Cybersecurity','SQLi','Labs'], url: '/files/sqli-audit1-balkar.pdf' },
+        { id: 'proj-burp-bruteforce', title: 'Burp Suite – Brute Force Simulation', description: 'Practical report with sample login page & wordlist.', tags: ['Burp Suite','Report','Ethical Hacking'], url: '/files/burp-bruteforce-report.pdf' },
+      ]),
+      posts: load('bs-posts', [
+        { id: 'blog-roadmap-bugbounty', title: 'My Bug Bounty Roadmap (Student Edition)', date: '2025-10-31', tags: ['Bug Bounty','Learning'], excerpt: 'How I plan my evenings, pick targets, and keep notes tidy while studying…', content: 'I split time between labs and recon. Weekly goals keep me honest. Here’s the checklist I actually use…' },
+        { id: 'blog-dvwa-notes', title: 'DVWA & bWAPP Notes – What Clicked', date: '2025-09-14', tags: ['Practice','DVWA','bWAPP'], excerpt: 'Boolean-based tricks, time delays, and why error messages are gold (when they exist).', content: 'On low level challenges I focus on patterns first, then generalize payloads for medium/high…' },
+      ]),
+      files: load('bs-files', [
+        { id: 'file-wordlist-mini', name: 'mini-wordlist.txt', kind: 'txt', url: '/files/mini-wordlist.txt', note: 'Tiny demo wordlist for practice' },
+        { id: 'file-sample-pdf', name: 'sample-handout.pdf', kind: 'pdf', url: '/files/sample-handout.pdf', note: 'Replace with your actual PDF' },
+      ]),
+      bio: load('bs-bio', {
+        name: 'Balkar Singh',
+        headline: 'Cybersecurity Student • Bug Bounty Learner',
+        location: 'Khiwa Kalan, Punjab (India)',
+        email: 'balkar913n@gmail.com',
+        about: '3rd year B.Voc in Cyber Security. Practicing labs (DVWA, bWAPP, SQLi Audit), writing practical files, and sharing learnings.',
+        links: [
+          { label: 'GitHub', href: 'https://github.com/your-handle' },
+          { label: 'LinkedIn', href: 'https://linkedin.com/in/your-handle' },
+          { label: 'Blog', href: '#blog' },
+        ]
+      })
+    };
+
+    // Persist helpers
+    const persist = () => {
+      save('bs-dark', state.dark);
+      save('bs-route', state.route);
+      save('bs-projects', state.projects);
+      save('bs-posts', state.posts);
+      save('bs-files', state.files);
+      save('bs-bio', state.bio);
+    };
+
+    // ---------- Utilities ----------
+    const $ = (sel, el=document) => el.querySelector(sel);
+    const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
+    const kebab = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+    // ---------- Routing ----------
+    function setRoute(route){
+      state.route = route; persist();
+      const el = document.getElementById(route);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // set active style
+      $$('nav [data-route]').forEach(b=> b.classList.toggle('bg-zinc-200/70', b.dataset.route===route));
+      $$('nav [data-route]').forEach(b=> b.classList.toggle('dark:bg-zinc-800', b.dataset.route===route));
+    }
+
+    // ---------- THEME ----------
+    function setTheme(dark){
+      state.dark = dark; persist();
+      document.documentElement.classList.toggle('dark', dark);
+      $('#theme-toggle').textContent = dark ? 'Light' : 'Dark';
+    }
+
+    // ---------- HERO / anime.js ----------
+    function heroInit(){
+      const brand = $('#brand');
+      const text = 'Balkar Singh';
+      brand.innerHTML = '';
+      text.split('').forEach(ch => {
+        const s = document.createElement('span');
+        s.className = 'char inline-block will-change-transform';
+        s.textContent = ch === ' ' ? '\u00A0' : ch;
+        brand.appendChild(s);
+      });
+      const targets = $$('.char', brand);
+      if (window.anime) {
+        const delayFn = (anime && anime.stagger) ? anime.stagger(25) : ((el, i) => i * 25);
+        anime({ targets, translateY: [20,0], opacity: [0,1], easing: 'easeOutExpo', duration: 900, delay: delayFn });
+      }
+    }
+
+    // ---------- RENDERERS ----------
+    function renderProjects(){
+      const grid = $('#projects-grid');
+      grid.innerHTML = '';
+      state.projects.forEach(p => {
+        const card = document.createElement('div');
+        card.id = p.id;
+        card.className = 'rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/70 p-5 flex flex-col';
+        card.innerHTML = `
+          <div class="text-sm text-zinc-500">PDF Project</div>
+          <h3 class="mt-1 text-xl font-semibold leading-tight">${p.title}</h3>
+          <p class="mt-2 text-zinc-600 dark:text-zinc-300 flex-1">${p.description ?? ''}</p>
+          ${p.tags?.length ? `<div class="mt-3 flex flex-wrap gap-2">${p.tags.map(t=>`<span class='text-xs px-2 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800'>#${t}</span>`).join('')}</div>`:''}
+          <div class="mt-5 flex gap-2">
+            <a href="${p.url}" target="_blank" rel="noreferrer" class="px-4 py-2 rounded-full border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800">View PDF</a>
+            <a href="${p.url}" download class="px-4 py-2 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:opacity-90">Download</a>
+            <button data-del="${p.id}" class="ml-auto px-4 py-2 rounded-full border border-red-200 dark:border-red-900/40 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20">Delete</button>
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+
+    function renderBlog(){
+      const grid = $('#blog-grid');
+      grid.innerHTML = '';
+      state.posts.forEach(post => {
+        const art = document.createElement('article');
+        art.id = post.id;
+        art.className = 'rounded-2xl border border-zinc-200 dark:border-zinc-800 p-5 bg-white/70 dark:bg-zinc-900/70';
+        art.innerHTML = `
+          <div class="text-xs text-zinc-500">${post.date}</div>
+          <h3 class="mt-1 text-xl font-semibold">${post.title}</h3>
+          <div class="mt-2 text-zinc-600 dark:text-zinc-300">${post.excerpt ?? ''}</div>
+          ${post.tags?.length ? `<div class="mt-3 flex flex-wrap gap-2">${post.tags.map(t=>`<span class='text-xs px-2 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800'>#${t}</span>`).join('')}</div>`:''}
+        `;
+        grid.appendChild(art);
+      });
+    }
+
+    function renderFiles(){
+      const list = $('#files-list');
+      list.innerHTML = '';
+      state.files.forEach(f => {
+        const row = document.createElement('div');
+        row.id = f.id;
+        row.className = 'flex items-center justify-between px-4 py-3 bg-white/60 dark:bg-zinc-900/60';
+        row.innerHTML = `
+          <div class="min-w-0">
+            <div class="font-medium truncate">${f.name} <span class="text-xs text-zinc-500">(${f.kind})</span></div>
+            ${f.note ? `<div class="text-sm text-zinc-600 dark:text-zinc-400 truncate">${f.note}</div>`: ''}
+          </div>
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <a href="${f.url}" target="_blank" rel="noreferrer" class="px-3 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800">Open</a>
+            <a href="${f.url}" download class="px-3 py-1.5 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 text-sm hover:opacity-90">Download</a>
+            <button data-del-file="${f.id}" class="px-3 py-1.5 rounded-full text-sm border border-red-200 dark:border-red-900/40 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20">Delete</button>
+          </div>`;
+        list.appendChild(row);
+      });
+    }
+
+    function renderBio(){
+      $('#bio-avatar').textContent = (state.bio.name||'').split(' ').map(s=>s[0]).join('');
+      $('#bio-name').textContent = state.bio.name;
+      $('#bio-headline').textContent = state.bio.headline;
+      $('#bio-about').textContent = state.bio.about;
+      $('#bio-location').textContent = state.bio.location;
+      $('#bio-email').href = 'mailto:'+state.bio.email;
+      $('#bio-email').textContent = state.bio.email;
+      const links = $('#bio-links');
+      links.innerHTML = '';
+      state.bio.links?.forEach(l => {
+        const a = document.createElement('a');
+        a.href = l.href; a.target = '_blank'; a.rel='noreferrer';
+        a.className = 'px-3 py-1.5 rounded-full border border-zinc-300 dark:border-zinc-700 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800';
+        a.textContent = l.label;
+        links.appendChild(a);
+      });
+    }
+
+    // ---------- Search (AJAX-like) ----------
+    function fakeSearchApi(query){
+      const q = (query||'').trim().toLowerCase();
+      return new Promise(res=>{
+        setTimeout(()=>{
+          if(!q) return res({projects:[], posts:[], files:[], bio:[]});
+          const contains = (t) => t && String(t).toLowerCase().includes(q);
+          const projects = state.projects.filter(p=> contains(p.title)||contains(p.description)||(p.tags||[]).some(contains));
+          const posts = state.posts.filter(p=> contains(p.title)||contains(p.excerpt)||contains(p.content)||(p.tags||[]).some(contains));
+          const files = state.files.filter(f=> contains(f.name)||contains(f.note)||contains(f.kind));
+          const bio = (contains(state.bio.headline)||contains(state.bio.about)) ? [{ id:'bio', title:'Bio', match:'Your profile matches this search.'}] : [];
+          res({projects, posts, files, bio});
+        }, 200);
+      });
+    }
+
+    let searchTimer = null;
+    function setupSearch(){
+      const input = $('#search-input');
+      const panel = $('#search-panel');
+      const results = $('#search-results');
+      const closeBtn = $('#search-close');
+      input.addEventListener('focus', ()=> panel.classList.remove('hidden'));
+      closeBtn.addEventListener('click', ()=> panel.classList.add('hidden'));
+      input.addEventListener('input', ()=>{
+        clearTimeout(searchTimer);
+        results.textContent = 'Searching…';
+        searchTimer = setTimeout(async ()=>{
+          const data = await fakeSearchApi(input.value);
+          // build results
+          const pieces = [];
+          function group(title, items, build){
+            if(!items.length) return;
+            pieces.push(`<div><div class='text-xs uppercase tracking-wider text-zinc-500 mb-1'>${title}</div><div class='space-y-1'>` + items.map(build).join('') + '</div></div>');
+          }
+          group('Projects', data.projects, p => `<button data-jump='projects:${p.id}' class='w-full text-left px-3 py-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800'><div class='font-medium'>${p.title}</div><div class='text-xs text-zinc-500 line-clamp-1'>${p.description||''}</div></button>`);
+          group('Blog', data.posts, p => `<button data-jump='blog:${p.id}' class='w-full text-left px-3 py-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800'><div class='font-medium'>${p.title}</div><div class='text-xs text-zinc-500 line-clamp-1'>${p.excerpt||''}</div></button>`);
+          group('Files', data.files, f => `<button data-jump='files:${f.id}' class='w-full text-left px-3 py-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800'><div class='font-medium'>${f.name}</div><div class='text-xs text-zinc-500 line-clamp-1'>${f.note||f.kind||''}</div></button>`);
+          if(data.bio.length){ pieces.push(`<div><div class='text-xs uppercase tracking-wider text-zinc-500 mb-1'>Bio</div><button data-jump='bio:bio' class='w-full text-left px-3 py-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800'><div class='font-medium'>Your Bio matches</div><div class='text-xs text-zinc-500'>Open bio section</div></button></div>`); }
+          results.innerHTML = pieces.length ? pieces.join('') : `<div class='p-6 text-sm text-zinc-500'>No results yet. Try typing a project name, tag, or file type.</div>`;
+        }, 200);
+      });
+
+      results.addEventListener('click', (e)=>{
+        const b = e.target.closest('[data-jump]');
+        if(!b) return;
+        const [route, id] = b.dataset.jump.split(':');
+        setRoute(route);
+        panel.classList.add('hidden');
+        input.value = '';
+        setTimeout(()=>{
+          const el = document.getElementById(id);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+        }, 50);
+      });
+    }
+
+    // ---------- Add forms ----------
+    function setupAddProject(){
+      const open = $('#add-proj-open');
+      const form = $('#add-proj-form');
+      const saveBtn = $('#proj-save');
+      const cancel = $('#proj-cancel');
+      open.addEventListener('click', ()=> form.classList.remove('hidden'));
+      cancel.addEventListener('click', ()=> form.classList.add('hidden'));
+      saveBtn.addEventListener('click', ()=>{
+        const title = $('#proj-title').value.trim();
+        const url = $('#proj-url').value.trim();
+        const tags = $('#proj-tags').value.split(',').map(s=>s.trim()).filter(Boolean);
+        const description = $('#proj-desc').value.trim();
+        if(!title || !url) return;
+        state.projects = [{ id: kebab(title)+'-'+Date.now(), title, url, tags, description }, ...state.projects];
+        persist(); renderProjects(); form.classList.add('hidden');
+        $('#proj-title').value = ''; $('#proj-url').value=''; $('#proj-tags').value=''; $('#proj-desc').value='';
+      });
+
+      // delete
+      $('#projects').addEventListener('click', (e)=>{
+        const btn = e.target.closest('[data-del]');
+        if(!btn) return;
+        const id = btn.dataset.del;
+        state.projects = state.projects.filter(x=> x.id!==id);
+        persist(); renderProjects();
+      });
+    }
+
+    function setupAddPost(){
+      const open = $('#add-post-open');
+      const form = $('#add-post-form');
+      const saveBtn = $('#post-save');
+      const cancel = $('#post-cancel');
+      open.addEventListener('click', ()=> form.classList.remove('hidden'));
+      cancel.addEventListener('click', ()=> form.classList.add('hidden'));
+      saveBtn.addEventListener('click', ()=>{
+        const title = $('#post-title').value.trim();
+        const tags = $('#post-tags').value.split(',').map(s=>s.trim()).filter(Boolean);
+        const excerpt = $('#post-excerpt').value.trim();
+        if(!title) return;
+        const date = new Date().toISOString().slice(0,10);
+        state.posts = [{ id: kebab(title)+'-'+Date.now(), title, excerpt, tags, date }, ...state.posts];
+        persist(); renderBlog(); form.classList.add('hidden');
+        $('#post-title').value=''; $('#post-tags').value=''; $('#post-excerpt').value='';
+      });
+    }
+
+    function setupAddFile(){
+      const open = $('#add-file-open');
+      const form = $('#add-file-form');
+      const saveBtn = $('#file-save');
+      const cancel = $('#file-cancel');
+      open.addEventListener('click', ()=> form.classList.remove('hidden'));
+      cancel.addEventListener('click', ()=> form.classList.add('hidden'));
+      saveBtn.addEventListener('click', ()=>{
+        const name = $('#file-name').value.trim();
+        const kind = $('#file-kind').value.trim();
+        const url = $('#file-url').value.trim();
+        const note = $('#file-note').value.trim();
+        if(!name || !url) return;
+        state.files = [{ id: kebab(name)+'-'+Date.now(), name, kind, url, note }, ...state.files];
+        persist(); renderFiles(); form.classList.add('hidden');
+        $('#file-name').value=''; $('#file-kind').value='pdf'; $('#file-url').value=''; $('#file-note').value='';
+      });
+
+      // delete
+      $('#files').addEventListener('click', (e)=>{
+        const btn = e.target.closest('[data-del-file]');
+        if(!btn) return;
+        const id = btn.dataset.delFile;
+        state.files = state.files.filter(x=> x.id!==id);
+        persist(); renderFiles();
+      });
+    }
+
+    // ---------- Bio Edit ----------
+    function setupBio(){
+      const edit = $('#bio-edit');
+      const form = $('#bio-form');
+      edit.addEventListener('click', ()=>{
+        form.classList.toggle('hidden');
+        $('#f-name').value = state.bio.name;
+        $('#f-headline').value = state.bio.headline;
+        $('#f-about').value = state.bio.about;
+        $('#f-location').value = state.bio.location;
+        $('#f-email').value = state.bio.email;
+        renderLinksEditor();
+      });
+      $('#bio-cancel').addEventListener('click', ()=> form.classList.add('hidden'));
+      $('#bio-save').addEventListener('click', ()=>{
+        state.bio.name = $('#f-name').value.trim();
+        state.bio.headline = $('#f-headline').value.trim();
+        state.bio.about = $('#f-about').value.trim();
+        state.bio.location = $('#f-location').value.trim();
+        state.bio.email = $('#f-email').value.trim();
+        persist(); renderBio(); form.classList.add('hidden');
+      });
+
+      // links
+      $('#link-add').addEventListener('click', ()=>{
+        const label = $('#link-label').value.trim();
+        const href = $('#link-href').value.trim();
+        if(!label || !href) return;
+        state.bio.links = [...(state.bio.links||[]), {label, href}];
+        $('#link-label').value=''; $('#link-href').value='';
+        renderLinksEditor();
+      });
+    }
+
+    function renderLinksEditor(){
+      const list = $('#links-list');
+      list.innerHTML = '';
+      (state.bio.links||[]).forEach((l, i)=>{
+        const chip = document.createElement('span');
+        chip.className = 'inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-sm';
+        chip.innerHTML = `<a href='${l.href}' target='_blank' rel='noreferrer' class='underline decoration-dotted underline-offset-4'>${l.label}</a> <button data-rem='${i}' class='text-zinc-500 hover:text-zinc-700'>×</button>`;
+        list.appendChild(chip);
+      });
+      list.addEventListener('click', (e)=>{
+        const b = e.target.closest('[data-rem]');
+        if(!b) return;
+        const idx = +b.dataset.rem;
+        state.bio.links.splice(idx,1);
+        renderLinksEditor();
+      });
+    }
+
+    // ---------- Init ----------
+    function init(){
+      // theme
+      setTheme(state.dark);
+      $('#theme-toggle').addEventListener('click', ()=> setTheme(!state.dark));
+
+      // nav
+      $('#nav-home').addEventListener('click', ()=> setRoute('home'));
+      $$('nav [data-route]').forEach(btn=> btn.addEventListener('click', ()=> setRoute(btn.dataset.route)));
+      $$('[data-route-link]').forEach(a=> a.addEventListener('click', (e)=>{ e.preventDefault(); setRoute(a.dataset.routeLink); }));
+      setRoute(state.route);
+
+      // content
+      renderProjects();
+      renderBlog();
+      renderFiles();
+      renderBio();
+      heroInit();
+      setupSearch();
+      setupAddProject();
+      setupAddPost();
+      setupAddFile();
+      setupBio();
+
+      $('#year').textContent = new Date().getFullYear();
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
