@@ -1,9 +1,9 @@
 [
   {
-    "id": "file-example",
-    "name": "example.pdf",
+    "id": "hacking-the-art",
+    "name": "hacking-the-art.pdf",
     "kind": "pdf",
-    "url": "/files/example.pdf",
+    "url": "/files/hacking-the-art.pdf",
     "note": "Sample file from JSON"
   }
 ]
