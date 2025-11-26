@@ -1,15 +1,9 @@
 [
-  { 
-    id: 'proj-sqli-labs',
-  title: 'SQLi Audit 1 – Complete Solutions', description: 'Step-by-step solutions with screenshots for all lessons.',
-  tags: ['Cybersecurity','SQLi','Labs'], 
-  url: '/files/sqli-audit1-balkar.pdf' },
-  
-        {
-          id: 'proj-burp-bruteforce',
-  title: 'Burp Suite – Brute Force Simulation',
-  description: 'Practical report with sample login page & wordlist.', 
-  tags: ['Burp Suite','Report','Ethical Hacking'], 
-  url: '/files/burp-bruteforce-report.pdf' },
-        }
+  {
+    "id": "proj-example",
+    "title": "Example Project",
+    "description": "Temporary placeholder project",
+    "tags": ["Demo"],
+    "url": "/files/example.pdf"
+  }
 ]
