@@ -340,26 +340,19 @@ function showSkill() -->
     let state = {
       dark: load('bs-dark', true),
       route: load('bs-route', 'home'),
-      projects: load('bs-projects', [
-        { id: 'proj-sqli-labs', title: 'SQLi Audit 1 – Complete Solutions', description: 'Step-by-step solutions with screenshots for all lessons.', tags: ['Cybersecurity','SQLi','Labs'], url: '/files/sqli-audit1-balkar.pdf' },
-        { id: 'proj-burp-bruteforce', title: 'Burp Suite – Brute Force Simulation', description: 'Practical report with sample login page & wordlist.', tags: ['Burp Suite','Report','Ethical Hacking'], url: '/files/burp-bruteforce-report.pdf' },
-      ]),
+      projects: load('bs-projects', [ ]),
       posts: load('bs-posts', [
         { id: 'blog-roadmap-bugbounty', title: 'My Bug Bounty Roadmap (Student Edition)', date: '2025-10-31', tags: ['Bug Bounty','Learning'], excerpt: 'How I plan my evenings, pick targets, and keep notes tidy while studying…', content: 'I split time between labs and recon. Weekly goals keep me honest. Here’s the checklist I actually use…' },
         { id: 'blog-dvwa-notes', title: 'DVWA & bWAPP Notes – What Clicked', date: '2025-09-14', tags: ['Practice','DVWA','bWAPP'], excerpt: 'Boolean-based tricks, time delays, and why error messages are gold (when they exist).', content: 'On low level challenges I focus on patterns first, then generalize payloads for medium/high…' },
       ]),
       files: load('bs-files', [ ]),
       bio: load('bs-bio', {
-        name: 'Balkar Singh',
-        headline: 'Cybersecurity Student • Bug Bounty Learner',
-        location: 'Khiwa Kalan, Punjab (India)',
-        email: 'balkar913n@gmail.com',
-        about: '3rd year B.Voc in Cyber Security. Practicing labs (DVWA, bWAPP, SQLi Audit), writing practical files, and sharing learnings.',
-        links: [
-          { label: 'GitHub', href: 'https://github.com/Balkar13' },
-          { label: 'LinkedIn', href: 'https://linkedin.com/in/balkar-singh-4346932a3/' },
-          { label: 'Blog', href: 'wwww.balkarsidhu.xyz' },
-        ]
+        name: '',
+        headline: '',
+        location: '',
+        email: '',
+        about: '',
+        links: [ ]
       })
     };
 
@@ -715,6 +708,40 @@ fetch('/files/files.json')
 
       $('#year').textContent = new Date().getFullYear();
     }
+    // Load projects from data/projects.json (if present)
+fetch('/data/projects.json')
+  .then(r => {
+    if(!r.ok) throw new Error('projects.json not found');
+    return r.json();
+  })
+  .then(json => {
+    if(Array.isArray(json)){
+      state.projects = json;
+      persist();
+      renderProjects();
+    }
+  })
+  .catch(err => {
+    console.info('No data/projects.json or failed to load — using local state/projects fallback.', err);
+  });
+
+// Load bio from data/bio.json (if present)
+fetch('/data/bio.json')
+  .then(r => {
+    if(!r.ok) throw new Error('bio.json not found');
+    return r.json();
+  })
+  .then(json => {
+    if(json && typeof json === 'object'){
+      state.bio = json;
+      persist();
+      renderBio();
+    }
+  })
+  .catch(err => {
+    console.info('No data/bio.json or failed to load — using local state/bio fallback.', err);
+  });
+
 
     document.addEventListener('DOMContentLoaded', init);
   </script>
