@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Balkar Singh · Portfolio</title>
   <!-- TailwindCSS CDN (pure CSS) -->
+  <link rel="icon" href="/path/to/favicon.ico">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -597,32 +598,47 @@ function showSkill() -->
 
     // ---------- Add forms ----------
     function setupAddProject(){
-      const open = $('#add-proj-open');
-      const form = $('#add-proj-form');
-      const saveBtn = $('#proj-save');
-      const cancel = $('#proj-cancel');
-      open.addEventListener('click', ()=> form.classList.remove('hidden'));
-      cancel.addEventListener('click', ()=> form.classList.add('hidden'));
-      saveBtn.addEventListener('click', ()=>{
-        const title = $('#proj-title').value.trim();
-        const url = $('#proj-url').value.trim();
-        const tags = $('#proj-tags').value.split(',').map(s=>s.trim()).filter(Boolean);
-        const description = $('#proj-desc').value.trim();
-        if(!title || !url) return;
-        state.projects = [{ id: kebab(title)+'-'+Date.now(), title, url, tags, description }, ...state.projects];
-        persist(); renderProjects(); form.classList.add('hidden');
-        $('#proj-title').value = ''; $('#proj-url').value=''; $('#proj-tags').value=''; $('#proj-desc').value='';
-      });
+  const open = $('#add-proj-open');   // may be null
+  const form = $('#add-proj-form');
+  const saveBtn = $('#proj-save');
+  const cancel = $('#proj-cancel');
 
-      // delete
-      $('#projects').addEventListener('click', (e)=>{
-        const btn = e.target.closest('[data-del]');
-        if(!btn) return;
-        const id = btn.dataset.del;
-        state.projects = state.projects.filter(x=> x.id!==id);
-        persist(); renderProjects();
-      });
-    }
+  // If the open button isn't present, skip open/cancel bindings
+  if (open) {
+    open.addEventListener('click', ()=> form.classList.remove('hidden'));
+    cancel.addEventListener('click', ()=> form.classList.add('hidden'));
+  } else {
+    // ensure the form stays hidden and cancel will not error if clicked from elsewhere
+    if (form) form.classList.add('hidden');
+  }
+
+  // Save (safe to attach if saveBtn exists)
+  if (saveBtn) {
+    saveBtn.addEventListener('click', ()=>{
+      const title = $('#proj-title').value.trim();
+      const url = $('#proj-url').value.trim();
+      const tags = $('#proj-tags').value.split(',').map(s=>s.trim()).filter(Boolean);
+      const description = $('#proj-desc').value.trim();
+      if(!title || !url) return;
+      state.projects = [{ id: kebab(title)+'-'+Date.now(), title, url, tags, description }, ...state.projects];
+      persist(); renderProjects(); if (form) form.classList.add('hidden');
+      $('#proj-title').value = ''; $('#proj-url').value=''; $('#proj-tags').value=''; $('#proj-desc').value='';
+    });
+  }
+
+  // Delete handler (attach to container if present)
+  const projectsEl = $('#projects');
+  if (projectsEl) {
+    projectsEl.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-del]');
+      if(!btn) return;
+      const id = btn.dataset.del;
+      state.projects = state.projects.filter(x=> x.id!==id);
+      persist(); renderProjects();
+    });
+  }
+}
+
 
     function setupAddPost(){
       const open = $('#add-post-open');
