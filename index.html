@@ -666,33 +666,62 @@ function showSkill() -->
       });
     }
 
-    function setupAddFile(){
-      const open = $('#add-file-open');
-      const form = $('#add-file-form');
-      const saveBtn = $('#file-save');
-      const cancel = $('#file-cancel');
-      open.addEventListener('click', ()=> form.classList.remove('hidden'));
-      cancel.addEventListener('click', ()=> form.classList.add('hidden'));
-      saveBtn.addEventListener('click', ()=>{
-        const name = $('#file-name').value.trim();
-        const kind = $('#file-kind').value.trim();
-        const url = $('#file-url').value.trim();
-        const note = $('#file-note').value.trim();
-        if(!name || !url) return;
-        state.files = [{ id: kebab(name)+'-'+Date.now(), name, kind, url, note }, ...state.files];
-        persist(); renderFiles(); form.classList.add('hidden');
-        $('#file-name').value=''; $('#file-kind').value='pdf'; $('#file-url').value=''; $('#file-note').value='';
-      });
+function setupAddFile(){
+  // Find elements (may be null if you commented out the Add button)
+  const open = $('#add-file-open');   // may be null
+  const form = $('#add-file-form');
+  const saveBtn = $('#file-save');
+  const cancel = $('#file-cancel');
 
-      // delete
-      $('#files').addEventListener('click', (e)=>{
-        const btn = e.target.closest('[data-del-file]');
-        if(!btn) return;
-        const id = btn.dataset.delFile;
-        state.files = state.files.filter(x=> x.id!==id);
-        persist(); renderFiles();
-      });
-    }
+  // If open button exists, attach handlers to show/hide the form.
+  if (open && form) {
+    open.addEventListener('click', ()=> form.classList.remove('hidden'));
+    if (cancel) cancel.addEventListener('click', ()=> form.classList.add('hidden'));
+  } else {
+    // Ensure the form is hidden if there's no open button
+    if (form) form.classList.add('hidden');
+  }
+
+  // Save handler (guarded)
+  if (saveBtn) {
+    saveBtn.addEventListener('click', ()=>{
+      const name = ($('#file-name') && $('#file-name').value || '').trim();
+      const kind = ($('#file-kind') && $('#file-kind').value || '').trim();
+      const url  = ($('#file-url') && $('#file-url').value || '').trim();
+      const note = ($('#file-note') && $('#file-note').value || '').trim();
+
+      if (!name || !url) return; // require at least name + url
+
+      window.state = window.state || {};
+      window.state.files = [{ id: kebab(name)+'-'+Date.now(), name, kind, url, note }, ...(window.state.files || [])];
+
+      if (typeof persist === 'function') persist();
+      if (typeof renderFiles === 'function') renderFiles();
+
+      // hide form & clear inputs
+      if (form) form.classList.add('hidden');
+      if ($('#file-name')) $('#file-name').value = '';
+      if ($('#file-kind')) $('#file-kind').value = 'pdf';
+      if ($('#file-url')) $('#file-url').value = '';
+      if ($('#file-note')) $('#file-note').value = '';
+    });
+  }
+
+  // Delete handler (guarded)
+  const filesContainer = $('#files');
+  if (filesContainer) {
+    filesContainer.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-del-file]');
+      if (!btn) return;
+      const id = btn.dataset.delFile;
+      window.state = window.state || {};
+      window.state.files = (window.state.files || []).filter(x => x.id !== id);
+      if (typeof persist === 'function') persist();
+      if (typeof renderFiles === 'function') renderFiles();
+    });
+  }
+}
+
 
     // ---------- Bio Edit ----------
     function setupBio(){
