@@ -9,7 +9,7 @@
   {
     "id": "SQLi-Lab-1",
     "title": "SQLi-Audi 1 (GITHUB LABS) Part-1",
-    "description": "This Project pdf includes the Solution of first 8 important SQL Injection Labs, which are too basic to understand as a beginner in SQL injection. ",
+    "description": "This Project pdf includes the Solution of first 7 important SQL Injection Labs, which are too basic to understand as a beginner in SQL injection. ",
     "tags": ["sql","sqlinjection"],
     "url": "/files/SQL_BLEED.pdf"
   },
