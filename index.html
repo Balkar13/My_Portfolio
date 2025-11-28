@@ -61,9 +61,14 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section id="home" class="mx-auto max-w-6xl px-4 pt-16 pb-10">
-    <div class="grid md:grid-cols-2 gap-10 items-center">
+  <!-- put this directly under the closing header tag -->
+<main id="pages-wrapper"
+  class="h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth"
+  style="-webkit-overflow-scrolling: touch;"
+>
+  <!-- HOME -->
+  <section id="home" class="snap-start min-h-screen flex items-center justify-center">
+    <div class="max-w-6xl w-full px-4 py-12">
       <div>
         <h1 id="brand" class="text-5xl md:text-6xl font-black tracking-tight leading-[1.05]"></h1>
         <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-300 max-w-prose">
@@ -188,35 +193,17 @@ function showSkill() -->
 </div>
 
 
-
-
-
-
-<!-- END: Square Portfolio Stats -->
-
-      <!-- <div class="relative">
-        <div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 shadow-xl p-1">
-          <div class="h-full w-full rounded-[1.35rem] bg-white/70 dark:bg-zinc-950/60 backdrop-blur-sm flex items-center justify-center text-center p-8">
-            <div>
-              <div class="text-sm uppercase tracking-widest text-zinc-500">Inspired by</div>
-              <div class="text-2xl font-semibold">anime.js + Apple’s clean aesthetic</div>
-              <div class="mt-2 text-zinc-600 dark:text-zinc-400">Subtle motion, big whitespace, sharp typography.</div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="mx-auto max-w-6xl px-4 py-14 scroll-mt-24">
-    <div class="mb-6">
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Projects (PDF)</h2>
+  <!-- PROJECTS -->
+  <section id="projects" class="snap-start min-h-screen flex items-center justify-center">
+    <div class="max-w-6xl w-full px-4 py-12">
+      <div class="mb-6">
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight">Projects (PDF)</h2>
       <p class="text-zinc-600 dark:text-zinc-400 mt-2">These are the cybersecurity projects I’ve built independently using my skills, research, and practical learning.. </p>
-    </div>
-
-    <!-- Add Project Form -->
-    <div class="mb-6">
+     </div>
+        <div class="mb-6">
       <!--<button id="add-proj-open" class="px-4 py-2 rounded-full border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-sm">+ Add Project</button>-->
       <div id="add-proj-form" class="hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 p-4 bg-white/60 dark:bg-zinc-900/60 mt-3">
         <div class="grid md:grid-cols-2 gap-3">
@@ -233,16 +220,17 @@ function showSkill() -->
     </div>
 
     <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
   </section>
 
-  <!-- Bio -->
-  <section id="bio" class="mx-auto max-w-6xl px-4 py-14 scroll-mt-24">
-    <div class="mb-6">
+  <!-- BIO -->
+  <section id="bio" class="snap-start min-h-screen flex items-center justify-center">
+    <div class="max-w-6xl w-full px-4 py-12">
+      <div class="mb-6">
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Bio</h2>
       <p class="text-zinc-600 dark:text-zinc-400 mt-2">Who I am, what I’m learning, and how to reach me.</p>
     </div>
-
-    <div class="rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/70 p-6">
+ <div class="rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/70 p-6">
       <div class="flex items-start gap-4">
         <div id="bio-avatar" class="h-16 w-16 rounded-2xl bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-xl font-bold">BS</div>
         <div class="flex-1 min-w-0">
@@ -283,12 +271,10 @@ function showSkill() -->
     </div>
   </section>
 
-
-
-  
-  <!-- Blog -->
-  <section id="blog" class="mx-auto max-w-6xl px-4 py-14 scroll-mt-24">
-    <div class="mb-6">
+  <!-- BLOG -->
+  <section id="blog" class="snap-start min-h-screen flex items-center justify-center">
+    <div class="max-w-6xl w-full px-4 py-12">
+      <div class="mb-6">
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Blog</h2>
       <p class="text-zinc-600 dark:text-zinc-400 mt-2">Short, practical write-ups.</p>
     </div>
@@ -307,13 +293,14 @@ function showSkill() -->
         </div>
       </div>
     </div>
-
-    <div id="blog-grid" class="grid md:grid-cols-2 gap-6"></div>
+      <div id="blog-grid" class="grid md:grid-cols-2 gap-6"></div>
+    </div>
   </section>
 
-  <!-- Files -->
-  <section id="files" class="mx-auto max-w-6xl px-4 py-14 scroll-mt-24">
-    <div class="mb-6">
+  <!-- FILES -->
+  <section id="files" class="snap-start min-h-screen flex items-center justify-center">
+    <div class="max-w-6xl w-full px-4 py-12">
+       <div class="mb-6">
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Files</h2>
       <p class="text-zinc-600 dark:text-zinc-400 mt-2">Extra resources, wordlists, PDFs, and more.</p>
     </div>
@@ -335,7 +322,33 @@ function showSkill() -->
     </div>
 
     <div id="files-list" class="divide-y divide-zinc-200 dark:divide-zinc-800 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden"></div>
+    </div>
   </section>
+</main>
+
+  
+  <!-- Hero -->
+
+
+
+
+
+<!-- END: Square Portfolio Stats -->
+
+      <!-- <div class="relative">
+        <div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 shadow-xl p-1">
+          <div class="h-full w-full rounded-[1.35rem] bg-white/70 dark:bg-zinc-950/60 backdrop-blur-sm flex items-center justify-center text-center p-8">
+            <div>
+              <div class="text-sm uppercase tracking-widest text-zinc-500">Inspired by</div>
+              <div class="text-2xl font-semibold">anime.js + Apple’s clean aesthetic</div>
+              <div class="mt-2 text-zinc-600 dark:text-zinc-400">Subtle motion, big whitespace, sharp typography.</div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
 
 <!-- Social Media Bar -->
 <div class="mx-auto max-w-6xl px-4 mt-12 mb-20">
@@ -383,6 +396,7 @@ function showSkill() -->
 
   </div>
 </div>
+
 
   
   <footer class="mt-20 py-10 border-t border-zinc-200 dark:border-zinc-800 text-sm text-center text-zinc-500">
