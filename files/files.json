@@ -1,10 +1,24 @@
 [
   {
     "id": "hacking-the-art",
-    "name": "hacking-the-art.pdf",
+    "name": "Hacking - The Art of Exploitation, 2nd Edition by Jon Erickson.pdf",
     "kind": "pdf",
-    "url": "/files/hacking-the-art.pdf",
-    "note": "Sample file from JSON"
+    "url": "/files/Hacking - The Art of Exploitation, 2nd Edition by Jon Erickson.pdf",
+    "note": "Encoding is currupted of this book"
+  }
+    {
+    "id": "black-hat-python-python-programming-for-hackers-and-pentesters",
+    "name": "black-hat-python-python-programming-for-hackers-and-pentesters.pdf",
+    "kind": "pdf",
+    "url": "/files/black-hat-python-python-programming-for-hackers-and-pentesters.pdf",
+    "note": "This book contains Writing a Sniffer, Web Hackery, Extending Burp Proxy, Exfilteration, Windows Privilege Escalation"
+  }
+  {
+    "id": "The.Shellcoders.Handbook.2nd.Edition.Aug.2007",
+    "name": "black-hat-python-python-programming-for-hackers-and-pentesters.pdf",
+    "kind": "pdf",
+    "url": "/files/The.Shellcoders.Handbook.2nd.Edition.Aug.2007.pdf",
+    "note": "This book contains Stack Overflows, Shellcode, format string bugs, Heap Overflows, Solaris Exploitation, OS x Shellcode etc."
   }
 ]
 
