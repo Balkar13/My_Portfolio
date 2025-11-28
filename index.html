@@ -724,38 +724,36 @@ function setupAddFile(){
 
 
     // ---------- Bio Edit ----------
-    function setupBio(){
-      const edit = $('#bio-edit');
-      const form = $('#bio-form');
-      edit.addEventListener('click', ()=>{
-        form.classList.toggle('hidden');
-        $('#f-name').value = state.bio.name;
-        $('#f-headline').value = state.bio.headline;
-        $('#f-about').value = state.bio.about;
-        $('#f-location').value = state.bio.location;
-        $('#f-email').value = state.bio.email;
-        renderLinksEditor();
-      });
-      $('#bio-cancel').addEventListener('click', ()=> form.classList.add('hidden'));
-      $('#bio-save').addEventListener('click', ()=>{
-        state.bio.name = $('#f-name').value.trim();
-        state.bio.headline = $('#f-headline').value.trim();
-        state.bio.about = $('#f-about').value.trim();
-        state.bio.location = $('#f-location').value.trim();
-        state.bio.email = $('#f-email').value.trim();
-        persist(); renderBio(); form.classList.add('hidden');
-      });
+function setupBio() {
+  const bioOpen = document.getElementById('bio-open');
+  const bioForm = document.getElementById('bio-form');
+  const bioText = document.getElementById('bio-text');
+  const bioSave = document.getElementById('bio-save');
+  const bioCancel = document.getElementById('bio-cancel');
 
-      // links
-      $('#link-add').addEventListener('click', ()=>{
-        const label = $('#link-label').value.trim();
-        const href = $('#link-href').value.trim();
-        if(!label || !href) return;
-        state.bio.links = [...(state.bio.links||[]), {label, href}];
-        $('#link-label').value=''; $('#link-href').value='';
-        renderLinksEditor();
-      });
-    }
+  // If any element is missing, DO NOT crash — just skip setup.
+  if (!bioOpen || !bioForm || !bioText || !bioSave || !bioCancel) {
+    console.warn("setupBio: required elements missing — skipping to avoid crash.");
+    return;
+  }
+
+  bioOpen.addEventListener('click', () => {
+    bioForm.classList.remove('hidden');
+    bioText.value = window.state.bio || "";
+  });
+
+  bioCancel.addEventListener('click', () => {
+    bioForm.classList.add('hidden');
+  });
+
+  bioSave.addEventListener('click', () => {
+    window.state.bio = bioText.value;
+    if (typeof persist === 'function') persist();
+    renderBio();
+    bioForm.classList.add('hidden');
+  });
+}
+
 
     function renderLinksEditor(){
       const list = $('#links-list');
