@@ -9,15 +9,15 @@
   {
     "id": "SQLi-Lab-1",
     "title": "SQLi-Audi 1 (GITHUB LABS) Part-1",
-    "description": "This Project docx includes the Solution of first 8 important SQL Injection Labs, which are too basic to understand as a beginner in SQL injection. ",
+    "description": "This Project pdf includes the Solution of first 8 important SQL Injection Labs, which are too basic to understand as a beginner in SQL injection. ",
     "tags": ["sql","sqlinjection"],
-    "url": "/files/SQL_BLEED.docx"
+    "url": "/files/SQL_BLEED.pdf"
   },
   {
     "id": "sqli_Bleed_2",
     "title": "SQLi-Audi 1 (GITHUB LABS) Part-2",
-    "description": "This Project docx includes the little advanced topic which are also must important to know --> Solution of 8,9 ",
+    "description": "This Project pdf includes the little advanced topic which are also must important to know --> Solution of 8,9 ",
     "tags": ["sql","sqlinjection"],
-    "url": "/files/sqli_Bleed_2.docx"
+    "url": "/files/sqli_Bleed_2.pdf"
   }
 ]
