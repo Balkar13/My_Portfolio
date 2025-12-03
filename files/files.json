@@ -19,6 +19,13 @@
     "kind": "pdf",
     "url": "/files/The.Shellcoders.Handbook.2nd.Edition.Aug.2007.pdf",
     "note": "This book contains Stack Overflows, Shellcode, format string bugs, Heap Overflows, Solaris Exploitation, OS x Shellcode etc."
+  },
+  {
+    "id": "Reversing-Secrets of Reverse Engineering",
+    "name": "Reversing-Secrets of Reverse Engineering.pdf",
+    "kind": "pdf",
+    "url": "/files/Reversing-Secrets of Reverse Engineering.pdf",
+    "note": "The only one single book Best for Reverse Engineering contains beginer to advanced reversing in practical way."
   }
 ]
 
